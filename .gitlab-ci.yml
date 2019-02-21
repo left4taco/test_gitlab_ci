@@ -2,7 +2,7 @@ job:
   stage: build
   script:
     - mkdir test
-    - echo 1234 > test/log.log
+    - echo "I'm in test branch" > test/log.log
   artifacts:
     paths:
       - test/
