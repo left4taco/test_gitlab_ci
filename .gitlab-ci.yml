@@ -1,8 +1,23 @@
-job:
+build/x86_64:
   stage: build
   script:
-    - mkdir test
-    - echo 1234 > test/log.log
+    - cat a/source_code > a/.coverage
+    - cat b/source_code > b/.coverage
+    - cat c/source_code > c/.coverage
   artifacts:
+    name: build_artifact
     paths:
-      - test/
+      - .
+
+test/x86_64:
+  stage: test
+  dependencies:
+    - build/x86_64
+  script:
+    - find . -name ".coverage"
+  artifacts:
+    name: test_artifact
+    paths:
+      - a
+      - b
+      - c
